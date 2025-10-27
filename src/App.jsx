@@ -12,6 +12,7 @@ import Pressurelayer from './Components/OpenLayer/OpenWeatherMap/Pressurelayer';
 import Windlayer from './Components/OpenLayer/OpenWeatherMap/Windlayer';
 import Temperaturelayer from './Components/OpenLayer/OpenWeatherMap/Temperaturelayer';
 import Wind from './Components/OpenLayer/OpenMeto/Wind';
+import WeatherDashboard from './Components/Dashboard/Dashboard';
 
 function App() {
 
@@ -22,12 +23,13 @@ function App() {
       children: [
         { index: true, element: <Home /> }, //  Default page
         { path: 'Pressure', element: <Pressure /> },
+        { path: 'dashboard', element: <WeatherDashboard /> },
         { path: 'Rain', element: <Rain /> },
         { path: 'Temperature', element: <Temperature /> },
         { path: 'wind', element: <Wind /> },
         { path: 'Cloudlayer', element: <Cloudlayer /> },
-        { path: 'Temperaturelayer', element: <Temperaturelayer /> },
         { path: 'Pressurelayer', element: <Pressurelayer /> },
+        { path: 'Temperaturelayer', element: <Temperaturelayer /> },
         { path: 'Windlayer', element: <Windlayer /> }
       ]
     }
