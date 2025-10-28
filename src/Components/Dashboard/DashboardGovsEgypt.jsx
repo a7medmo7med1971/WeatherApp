@@ -8,34 +8,34 @@ export default function DashboardGovsEgypt() {
   const [error, setError] = useState(null);
 
   const egyptGovernorates = [
-    { name: "القاهرة", lat: 30.0444, lon: 31.2357 },
-    { name: "الجيزة", lat: 30.0131, lon: 31.2089 },
-    { name: "الإسكندرية", lat: 31.2001, lon: 29.9187 },
-    { name: "القليوبية", lat: 30.4167, lon: 31.2000 },
-    { name: "المنوفية", lat: 30.4650, lon: 30.9310 },
-    { name: "الغربية", lat: 30.8667, lon: 31.0000 },
-    { name: "الدقهلية", lat: 31.0409, lon: 31.3785 },
-    { name: "كفر الشيخ", lat: 31.1107, lon: 30.9396 },
-    { name: "الشرقية", lat: 30.7323, lon: 31.7147 },
-    { name: "دمياط", lat: 31.4165, lon: 31.8133 },
-    { name: "بورسعيد", lat: 31.2565, lon: 32.2841 },
-    { name: "الإسماعيلية", lat: 30.5830, lon: 32.2654 },
-    { name: "السويس", lat: 29.9668, lon: 32.5498 },
-    { name: "بني سويف", lat: 29.0661, lon: 31.0994 },
-    { name: "الفيوم", lat: 29.3084, lon: 30.8428 },
-    { name: "المنيا", lat: 28.1099, lon: 30.7503 },
-    { name: "أسيوط", lat: 27.1800, lon: 31.1837 },
-    { name: "سوهاج", lat: 26.5590, lon: 31.6957 },
-    { name: "قنا", lat: 26.1551, lon: 32.7160 },
-    { name: "الأقصر", lat: 25.6872, lon: 32.6396 },
-    { name: "أسوان", lat: 24.0889, lon: 32.8998 },
-    { name: "البحر الأحمر", lat: 26.9845, lon: 33.9616 },
-    { name: "الوادى الجديد", lat: 25.4448, lon: 28.5559 },
-    { name: "مطروح", lat: 31.3543, lon: 27.2373 },
-    { name: "شمال سيناء", lat: 30.6060, lon: 33.6176 },
-    { name: "جنوب سيناء", lat: 28.2416, lon: 33.6176 },
-    { name: "البحيرة", lat: 30.8278, lon: 30.5256 },
-  ];
+  { name: "Cairo", lat: 30.0444, lon: 31.2357 },
+  { name: "Giza", lat: 30.0131, lon: 31.2089 },
+  { name: "Alexandria", lat: 31.2001, lon: 29.9187 },
+  { name: "Qalyubia", lat: 30.4167, lon: 31.2000 },
+  { name: "Monufia", lat: 30.4650, lon: 30.9310 },
+  { name: "Gharbia", lat: 30.8667, lon: 31.0000 },
+  { name: "Dakahlia", lat: 31.0409, lon: 31.3785 },
+  { name: "Kafr El Sheikh", lat: 31.1107, lon: 30.9396 },
+  { name: "Sharqia", lat: 30.7323, lon: 31.7147 },
+  { name: "Damietta", lat: 31.4165, lon: 31.8133 },
+  { name: "Port Said", lat: 31.2565, lon: 32.2841 },
+  { name: "Ismailia", lat: 30.5830, lon: 32.2654 },
+  { name: "Suez", lat: 29.9668, lon: 32.5498 },
+  { name: "Beni Suef", lat: 29.0661, lon: 31.0994 },
+  { name: "Fayoum", lat: 29.3084, lon: 30.8428 },
+  { name: "Minya", lat: 28.1099, lon: 30.7503 },
+  { name: "Assiut", lat: 27.1800, lon: 31.1837 },
+  { name: "Sohag", lat: 26.5590, lon: 31.6957 },
+  { name: "Qena", lat: 26.1551, lon: 32.7160 },
+  { name: "Luxor", lat: 25.6872, lon: 32.6396 },
+  { name: "Aswan", lat: 24.0889, lon: 32.8998 },
+  { name: "Red Sea", lat: 26.9845, lon: 33.9616 },
+  { name: "New Valley", lat: 25.4448, lon: 28.5559 },
+  { name: "Matrouh", lat: 31.3543, lon: 27.2373 },
+  { name: "North Sinai", lat: 30.6060, lon: 33.6176 },
+  { name: "South Sinai", lat: 28.2416, lon: 33.6176 },
+  { name: "Beheira", lat: 30.8278, lon: 30.5256 },
+];
 
   const fetchWeatherData = async (gov) => {
     setLoading(true);
@@ -73,7 +73,7 @@ export default function DashboardGovsEgypt() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('ar-EG', { 
+    return new Intl.DateTimeFormat('en-US', { 
       weekday: 'short', 
       day: 'numeric', 
       month: 'short' 
@@ -92,8 +92,8 @@ export default function DashboardGovsEgypt() {
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white">توقعات الطقس - محافظات مصر</h1>
-              <p className="text-blue-100 mt-1">بيانات حية ومحدثة لجميع المحافظات</p>
+              <h1 className="text-3xl sm:text-4xl font-bold text-white">Weather forecasts - Egypt’s governorates</h1>
+              <p className="text-blue-100 mt-1"> Live and updated data for all governorates </p>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function DashboardGovsEgypt() {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
             <span className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></span>
-            اختر المحافظة
+          Select Governorate
           </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -152,27 +152,27 @@ export default function DashboardGovsEgypt() {
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <h2 className="text-4xl font-bold mb-2">{selectedGov.name}</h2>
-                  <p className="text-blue-100">الطقس الحالي</p>
+                  <p className="text-blue-100">Current Weather</p>
                 </div>
                 <div className="text-6xl">{getWeatherIcon(weatherData.weathercode)}</div>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4">
-                  <p className="text-blue-100 text-sm mb-1">درجة الحرارة</p>
+                  <p className="text-blue-100 text-sm mb-1">Temperature</p>
                   <p className="text-3xl font-bold">{weatherData.temperature}°C</p>
                 </div>
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4">
-                  <p className="text-blue-100 text-sm mb-1">سرعة الرياح</p>
+                  <p className="text-blue-100 text-sm mb-1">Wind Speed</p>
                   <p className="text-3xl font-bold">{weatherData.windspeed} km/h</p>
                 </div>
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4">
-                  <p className="text-blue-100 text-sm mb-1">اتجاه الرياح</p>
+                  <p className="text-blue-100 text-sm mb-1">Wind Direction</p>
                   <p className="text-3xl font-bold">{weatherData.winddirection}°</p>
                 </div>
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4">
-                  <p className="text-blue-100 text-sm mb-1">الوقت</p>
-                  <p className="text-xl font-bold">{new Date(weatherData.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</p>
+                  <p className="text-blue-100 text-sm mb-1">Time</p>
+                  <p className="text-xl font-bold">{new Date(weatherData.time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function DashboardGovsEgypt() {
                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                توقعات الـ 16 يوم القادمة
+               Next 16 Days Forecast
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -198,7 +198,7 @@ export default function DashboardGovsEgypt() {
                   >
                     {index === 0 && (
                       <div className="absolute top-2 right-2 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold">
-                        اليوم
+                        Today
                       </div>
                     )}
                     
@@ -214,7 +214,7 @@ export default function DashboardGovsEgypt() {
                       <div className="space-y-2">
                         <div className="flex justify-between items-center">
                           <span className={`text-sm ${index === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
-                            العظمى
+                            High
                           </span>
                           <span className={`font-bold text-lg ${index === 0 ? 'text-white' : 'text-red-600'}`}>
                             {Math.round(forecastData.temperature_2m_max[index])}°
@@ -223,7 +223,7 @@ export default function DashboardGovsEgypt() {
                         
                         <div className="flex justify-between items-center">
                           <span className={`text-sm ${index === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
-                            الصغرى
+                            Low
                           </span>
                           <span className={`font-bold text-lg ${index === 0 ? 'text-white' : 'text-blue-600'}`}>
                             {Math.round(forecastData.temperature_2m_min[index])}°
@@ -232,7 +232,7 @@ export default function DashboardGovsEgypt() {
 
                         <div className="flex justify-between items-center">
                           <span className={`text-sm ${index === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
-                            أمطار
+                            Rain
                           </span>
                           <span className={`font-bold ${index === 0 ? 'text-white' : 'text-gray-700'}`}>
                             {forecastData.precipitation_sum[index] || 0} mm
@@ -241,7 +241,7 @@ export default function DashboardGovsEgypt() {
 
                         <div className="flex justify-between items-center">
                           <span className={`text-sm ${index === 0 ? 'text-blue-100' : 'text-gray-600'}`}>
-                            رياح
+                            Wind
                           </span>
                           <span className={`font-bold ${index === 0 ? 'text-white' : 'text-gray-700'}`}>
                             {Math.round(forecastData.windspeed_10m_max[index])} km/h
@@ -258,7 +258,7 @@ export default function DashboardGovsEgypt() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl p-6 text-white shadow-xl">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-red-100 text-sm">أعلى درجة حرارة متوقعة</p>
+                  <p className="text-red-100 text-sm">Highest Expected Temperature</p>
                   <span className="text-3xl">🌡️</span>
                 </div>
                 <p className="text-4xl font-bold">
@@ -268,7 +268,7 @@ export default function DashboardGovsEgypt() {
 
               <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-6 text-white shadow-xl">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-blue-100 text-sm">أدنى درجة حرارة متوقعة</p>
+                  <p className="text-blue-100 text-sm">Lowest Expected Temperature</p>
                   <span className="text-3xl">❄️</span>
                 </div>
                 <p className="text-4xl font-bold">
@@ -278,7 +278,7 @@ export default function DashboardGovsEgypt() {
 
               <div className="bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl p-6 text-white shadow-xl">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-indigo-100 text-sm">إجمالي الأمطار المتوقعة</p>
+                  <p className="text-indigo-100 text-sm">Total Expected Rainfall</p>
                   <span className="text-3xl">🌧️</span>
                 </div>
                 <p className="text-4xl font-bold">
@@ -293,8 +293,12 @@ export default function DashboardGovsEgypt() {
         {!loading && !weatherData && !error && (
           <div className="bg-white rounded-3xl shadow-xl p-12 text-center">
             <div className="text-6xl mb-4">🌤️</div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">اختر محافظة لعرض الطقس</h3>
-            <p className="text-gray-600">اضغط على أي محافظة من القائمة أعلاه لمشاهدة بيانات الطقس والتوقعات</p>
+           <h3 className="text-2xl font-bold text-gray-800 mb-2">
+            Select a governorate to view the weather
+          </h3>
+          <p className="text-gray-600">
+            Click on any governorate from the list above to see weather data and forecasts
+          </p>
           </div>
         )}
       </div>

@@ -24,29 +24,31 @@ export default function Navbar() {
                 to={"/Dashboard"}
                 className="text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
               >
-                Dashboard
+                Current Temperature 
               </Link>
               <Link
                 to={"/DashboardGovsEgypt"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
-                Layers
+                Expected Temperature
               </Link>
               <Link
-                to={"#analytics"}
+                to={"/Temperature"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
-                Analytics
+                Analysis
               </Link>
-              <Link
+              {/* <Link
                 to={"#alerts"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
                 Alerts
-              </Link>
-              <button className="ml-4 bg-white text-purple-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg">
+              </Link> */}
+               <Link to={"/"}>
+              <button className="ml-4 bg-white text-purple-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer">
                 Get Started
               </button>
+              </Link>
             </div>
           </div>
 

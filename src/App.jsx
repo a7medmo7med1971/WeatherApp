@@ -6,7 +6,6 @@ import Layout from './Components/Layout/Layout';
 import Pressure from './Components/OpenLayer/OpenMeto/Pressure';
 import Rain from './Components/OpenLayer/OpenMeto/Rain';
 import Temperature from './Components/OpenLayer/OpenMeto/Temperature';
-
 import Cloudlayer from './Components/OpenLayer/OpenWeatherMap/Cloudlayer';
 import Pressurelayer from './Components/OpenLayer/OpenWeatherMap/Pressurelayer';
 import Windlayer from './Components/OpenLayer/OpenWeatherMap/Windlayer';
