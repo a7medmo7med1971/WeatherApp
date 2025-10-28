@@ -1,5 +1,6 @@
 import React from "react";
 import { Cloud, Facebook, Twitter, Github, Linkedin, Mail, MapPin, Phone, ArrowRight, CloudRain, Wind, Thermometer } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -66,30 +67,30 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex space-x-3">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/10"
               >
                 <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/10"
               >
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="https://github.com/a7medmo7med1971"
                 className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/10"
               >
                 <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-blue-700 transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/10"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,10 +103,10 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Dashboard', 'Weather Layers', 'Analytics', 'Weather Alerts', 'API Access', 'Mobile App'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-gray-300 hover:text-white hover:translate-x-2 inline-flex items-center gap-2 transition-all duration-200 group">
+                  <Link to="/Dashboard" className="text-gray-300 hover:text-white hover:translate-x-2 inline-flex items-center gap-2 transition-all duration-200 group">
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -120,10 +121,10 @@ export default function Footer() {
             <ul className="space-y-3">
               {['About Us', 'Careers', 'Press Kit', 'Blog', 'Partners', 'Contact'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-gray-300 hover:text-white hover:translate-x-2 inline-flex items-center gap-2 transition-all duration-200 group">
+                  <Link to="#" className="text-gray-300 hover:text-white hover:translate-x-2 inline-flex items-center gap-2 transition-all duration-200 group">
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -137,28 +138,28 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a href="#" className="flex items-start space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
+                <Link to="#" className="flex items-start space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
                   <div className="bg-white/10 p-2 rounded-lg group-hover:bg-blue-600 transition-colors">
                     <MapPin className="w-5 h-5 flex-shrink-0" />
                   </div>
-                  <span className="text-sm">123 Weather Street<br/>Cairo, Egypt</span>
-                </a>
+                  <span className="text-sm"> Weather Street<br/>Cairo, Egypt</span>
+                </Link>
               </li>
               <li>
-                <a href="tel:+201234567890" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
+                <Link to="tel:+201234567890" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
                   <div className="bg-white/10 p-2 rounded-lg group-hover:bg-purple-600 transition-colors">
                     <Phone className="w-5 h-5 flex-shrink-0" />
                   </div>
-                  <span className="text-sm">+20 123 456 7890</span>
-                </a>
+                  <span className="text-sm">01099229118</span>
+                </Link>
               </li>
               <li>
-                <a href="mailto:info@climateintel.com" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
+                <Link to="mailto:info@climateintel.com" className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors duration-200 group">
                   <div className="bg-white/10 p-2 rounded-lg group-hover:bg-pink-600 transition-colors">
                     <Mail className="w-5 h-5 flex-shrink-0" />
                   </div>
                   <span className="text-sm">info@climateintel.com</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -168,21 +169,21 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Climate Intelligence. Crafted with ❤️ for weather enthusiasts
+              © {new Date().getFullYear()} Climate Intelligence. Crafted with for weather enthusiasts
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <a href="#privacy" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
+              <Link to="#privacy" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
                 Privacy Policy
-              </a>
-              <a href="#terms" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
+              </Link>
+              <Link to="#terms" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
                 Terms of Service
-              </a>
-              <a href="#cookies" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
+              </Link>
+              <Link to="#cookies" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
                 Cookie Policy
-              </a>
-              <a href="#accessibility" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
+              </Link>
+              <Link to="#accessibility" className="text-gray-400 hover:text-white transition-colors duration-200 hover:underline">
                 Accessibility
-              </a>
+              </Link>
             </div>
           </div>
         </div>
