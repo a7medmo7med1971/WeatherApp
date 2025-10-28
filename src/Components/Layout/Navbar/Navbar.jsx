@@ -82,7 +82,7 @@ export default function Navbar() {
               to={"/Temperature"}
               className="text-white/90 block px-3 py-2 rounded-lg text-base font-medium hover:bg-white/20 hover:text-white transition-all duration-200"
             >
-              Analytics
+               Analysis
             </Link>
             {/* <Link
               to={"#alerts"}
