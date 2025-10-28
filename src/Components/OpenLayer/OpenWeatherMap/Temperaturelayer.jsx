@@ -45,6 +45,7 @@ export default function TemperatureLayer() {
   }, []);
 
   return (
+    
     <div style={{ position: "relative", width: "100%", height: "92.9vh" }}>
       <div
     ref={mapRef}

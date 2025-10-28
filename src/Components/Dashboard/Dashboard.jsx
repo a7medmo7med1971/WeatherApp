@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Cloud, CloudRain, Wind, Droplets, Thermometer, Calendar, MapPin, RefreshCw, Sun, CloudSnow, Loader } from 'lucide-react';
+import { 
+  Cloud, CloudRain, Wind, Droplets, Thermometer, Calendar, 
+  MapPin, RefreshCw, Sun, CloudSnow, Loader 
+} from 'lucide-react';
 
 export default function WeatherDashboard() {
+  // الحالة العامة للبيانات
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [location, setLocation] = useState({ lat: 30.0444, lon: 31.2357 }); // Cairo default
+  
+  // الموقع الافتراضي (القاهرة)
+  const [location, setLocation] = useState({ 
+    lat: 31.231966249866918, 
+    lon: 30.041802113997814 
+  });
 
+  // دالة لجلب بيانات الطقس من API
   const fetchWeatherData = async (lat, lon) => {
     try {
       setLoading(true);
       setError(null);
+
+      // طلب من API لتوقع الطقس لمدة 16 يوم
       const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=16&timezone=auto`
       );
       
       if (!response.ok) throw new Error('Failed to fetch weather data');
@@ -26,8 +38,8 @@ export default function WeatherDashboard() {
     }
   };
 
+  // جلب الموقع الجغرافي للمستخدم أول ما الصفحة تفتح
   useEffect(() => {
-    // Get user location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -36,7 +48,7 @@ export default function WeatherDashboard() {
           fetchWeatherData(latitude, longitude);
         },
         () => {
-          // If user denies, use Cairo as default
+          // لو المستخدم رفض تحديد الموقع، نستخدم القاهرة
           fetchWeatherData(location.lat, location.lon);
         }
       );
@@ -45,10 +57,12 @@ export default function WeatherDashboard() {
     }
   }, []);
 
+  // تحديث البيانات يدويًا بزر "Refresh"
   const handleRefresh = () => {
     fetchWeatherData(location.lat, location.lon);
   };
 
+  // تحديد شكل الأيقونة حسب حالة الطقس
   const getWeatherIcon = (weatherCode) => {
     if (weatherCode === 0) return <Sun className="w-12 h-12 text-yellow-400" />;
     if (weatherCode <= 3) return <Cloud className="w-12 h-12 text-gray-400" />;
@@ -57,11 +71,13 @@ export default function WeatherDashboard() {
     return <Cloud className="w-12 h-12 text-gray-400" />;
   };
 
+  // تنسيق التاريخ بطريقة بسيطة (مثلاً: Fri, Oct 28)
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
   };
 
+  // لو البيانات لسه بتحميل
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center">
@@ -73,6 +89,7 @@ export default function WeatherDashboard() {
     );
   }
 
+  // لو حصل خطأ أثناء تحميل البيانات
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center">
@@ -93,13 +110,15 @@ export default function WeatherDashboard() {
     );
   }
 
+  // بيانات الطقس الحالية واليومية
   const currentWeather = weatherData?.current_weather;
   const dailyData = weatherData?.daily;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+
+        {/* الهيدر */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
             <h1 className="text-4xl font-bold text-gray-800 mb-2">Weather Dashboard</h1>
@@ -117,7 +136,7 @@ export default function WeatherDashboard() {
           </button>
         </div>
 
-        {/* Current Weather Card */}
+        {/* كارت الطقس الحالي */}
         <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl shadow-2xl p-8 mb-8 text-white">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-6">
@@ -131,6 +150,7 @@ export default function WeatherDashboard() {
               </div>
             </div>
             
+            {/* سرعة واتجاه الرياح */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
                 <div className="flex items-center gap-2 mb-2">
@@ -150,7 +170,7 @@ export default function WeatherDashboard() {
           </div>
         </div>
 
-        {/* Stats Grid */}
+        {/* البطاقات الإحصائية لليوم */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between mb-4">
@@ -186,13 +206,15 @@ export default function WeatherDashboard() {
           </div>
         </div>
 
-        {/* 7-Day Forecast */}
+        {/* توقعات الطقس لمدة 16 يوم */}
         <div className="bg-white rounded-3xl shadow-2xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
             <Calendar className="w-6 h-6 text-blue-600" />
-            7-Day Forecast
+            16-Day Forecast
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
+
+          {/* شبكة الأيام */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4">
             {dailyData.time.map((date, index) => (
               <div
                 key={date}

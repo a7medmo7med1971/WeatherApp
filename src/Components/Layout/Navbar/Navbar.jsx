@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Cloud, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,37 +13,37 @@ export default function Navbar() {
             <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
               <Cloud className="w-7 h-7 text-white" />
             </div>
-            <span className="text-2xl font-bold text-white tracking-tight">
+            <Link to={"/"} className="text-2xl font-bold text-white tracking-tight">
               Climate Intelligence
-            </span>
+            </Link>
           </div>
 
           <div className="hidden md:block">
             <div className="flex items-center space-x-1">
-              <a
-                href="/Dashboard"
+              <Link
+                to={"/Dashboard"}
                 className="text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
               >
                 Dashboard
-              </a>
-              <a
-                href="#layers"
+              </Link>
+              <Link
+                to={"/DashboardGovsEgypt"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
                 Layers
-              </a>
-              <a
-                href="#analytics"
+              </Link>
+              <Link
+                to={"#analytics"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
                 Analytics
-              </a>
-              <a
-                href="#alerts"
+              </Link>
+              <Link
+                to={"#alerts"}
                 className="text-white/90 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 hover:text-white backdrop-blur-sm transition-all duration-200"
               >
                 Alerts
-              </a>
+              </Link>
               <button className="ml-4 bg-white text-purple-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg">
                 Get Started
               </button>
@@ -63,30 +64,30 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white/10 backdrop-blur-md">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="#dashboard"
+            <Link
+              to={"/Dashboard"}
               className="text-white block px-3 py-2 rounded-lg text-base font-medium hover:bg-white/20 transition-all duration-200"
             >
               Dashboard
-            </a>
-            <a
-              href="#layers"
+            </Link>
+            <Link
+                to={"/DashboardGovsEgypt"}
               className="text-white/90 block px-3 py-2 rounded-lg text-base font-medium hover:bg-white/20 hover:text-white transition-all duration-200"
             >
               Layers
-            </a>
-            <a
-              href="#analytics"
+            </Link>
+            <Link
+              to={"#analytics"}
               className="text-white/90 block px-3 py-2 rounded-lg text-base font-medium hover:bg-white/20 hover:text-white transition-all duration-200"
             >
               Analytics
-            </a>
-            <a
-              href="#alerts"
+            </Link>
+            <Link
+              to={"#alerts"}
               className="text-white/90 block px-3 py-2 rounded-lg text-base font-medium hover:bg-white/20 hover:text-white transition-all duration-200"
             >
               Alerts
-            </a>
+            </Link>
             <button className="w-full mt-2 bg-white text-purple-600 px-4 py-2 rounded-lg text-base font-semibold hover:bg-purple-50 transition-all duration-200">
               Get Started
             </button>

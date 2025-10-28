@@ -13,6 +13,7 @@ import Windlayer from './Components/OpenLayer/OpenWeatherMap/Windlayer';
 import Temperaturelayer from './Components/OpenLayer/OpenWeatherMap/Temperaturelayer';
 import Wind from './Components/OpenLayer/OpenMeto/Wind';
 import WeatherDashboard from './Components/Dashboard/Dashboard';
+import DashboardGovsEgypt from './Components/Dashboard/DashboardGovsEgypt';
 
 function App() {
 
@@ -24,15 +25,19 @@ function App() {
         { index: true, element: <Home /> }, //  Default page
         { path: 'Pressure', element: <Pressure /> },
         { path: 'dashboard', element: <WeatherDashboard /> },
+        { path: 'DashboardGovsEgypt', element: <DashboardGovsEgypt /> },
         { path: 'Rain', element: <Rain /> },
-        { path: 'Temperature', element: <Temperature /> },
         { path: 'wind', element: <Wind /> },
         { path: 'Cloudlayer', element: <Cloudlayer /> },
         { path: 'Pressurelayer', element: <Pressurelayer /> },
-        { path: 'Temperaturelayer', element: <Temperaturelayer /> },
+         { path: 'Temperaturelayer', element: <Temperaturelayer /> },
         { path: 'Windlayer', element: <Windlayer /> }
       ]
-    }
+    },
+    
+   
+
+{ path: 'Temperature', element: <Temperature /> }
   ]);
 
   return (

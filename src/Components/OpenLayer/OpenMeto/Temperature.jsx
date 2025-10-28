@@ -84,72 +84,72 @@ export default function WeatherMap() {
     vectorSourceRef.current.addFeature(bufferFeature);
     map.getView().animate({ center: center3857, zoom: 8 });
 
-    popupRef.current.innerHTML = `
-      <div class="bg-gradient-to-br from-white to-blue-50 p-6 rounded-2xl shadow-2xl border border-blue-100 w-80 backdrop-blur-xl">
-        <div class="flex items-center justify-between mb-4">
-          <h4 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 flex items-center gap-2">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+   popupRef.current.innerHTML = `
+  <div class="bg-gradient-to-br from-white to-blue-50 p-4 sm:p-6 rounded-2xl shadow-2xl border border-blue-100 w-[280px] sm:w-80 backdrop-blur-xl max-w-[90vw]">
+    <div class="flex items-center justify-between mb-3 sm:mb-4">
+      <h4 class="text-base sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 flex items-center gap-1.5 sm:gap-2">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+        Weather Info
+      </h4>
+      <div class="bg-green-100 px-2 sm:px-3 py-1 rounded-full">
+        <span class="text-green-700 text-[10px] sm:text-xs font-semibold">LIVE</span>
+      </div>
+    </div>
+    
+    <div class="space-y-2.5 sm:space-y-3">
+      <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-3 sm:p-4 rounded-xl text-white">
+        <p class="text-xs sm:text-sm opacity-90 mb-1">Current Temperature</p>
+        <p class="text-3xl sm:text-4xl font-bold">${weather.currentTemp}°C</p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-2 sm:gap-3">
+        <div class="bg-red-50 p-2.5 sm:p-3 rounded-xl border border-red-100">
+          <div class="flex items-center gap-1.5 sm:gap-2 mb-1">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
-            Weather Info
-          </h4>
-          <div class="bg-green-100 px-3 py-1 rounded-full">
-            <span class="text-green-700 text-xs font-semibold">LIVE</span>
+            <span class="text-[10px] sm:text-xs text-red-700 font-medium">Max</span>
           </div>
+          <p class="text-xl sm:text-2xl font-bold text-red-600">${weather.maxTemp}°C</p>
         </div>
         
-        <div class="space-y-3">
-          <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-xl text-white">
-            <p class="text-sm opacity-90 mb-1">Current Temperature</p>
-            <p class="text-4xl font-bold">${weather.currentTemp}°C</p>
+        <div class="bg-blue-50 p-2.5 sm:p-3 rounded-xl border border-blue-100">
+          <div class="flex items-center gap-1.5 sm:gap-2 mb-1">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+            </svg>
+            <span class="text-[10px] sm:text-xs text-blue-700 font-medium">Min</span>
           </div>
-          
-          <div class="grid grid-cols-2 gap-3">
-            <div class="bg-red-50 p-3 rounded-xl border border-red-100">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-                <span class="text-xs text-red-700 font-medium">Max</span>
-              </div>
-              <p class="text-2xl font-bold text-red-600">${weather.maxTemp}°C</p>
-            </div>
-            
-            <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
-              <div class="flex items-center gap-2 mb-1">
-                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                </svg>
-                <span class="text-xs text-blue-700 font-medium">Min</span>
-              </div>
-              <p class="text-2xl font-bold text-blue-600">${weather.minTemp}°C</p>
-            </div>
-          </div>
-          
-          <div class="bg-purple-50 p-3 rounded-xl border border-purple-100">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-                <span class="text-sm text-purple-700 font-medium">Wind Speed</span>
-              </div>
-              <span class="text-lg font-bold text-purple-600">${weather.windspeed} km/h</span>
-            </div>
-            <div class="mt-2 text-xs text-purple-600">Direction: ${weather.winddirection}°</div>
-          </div>
-          
-          <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
-            <div class="flex items-center gap-2 text-gray-600">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span class="text-xs font-medium">Last Updated: ${new Date(weather.time).toLocaleString()}</span>
-            </div>
-          </div>
+          <p class="text-xl sm:text-2xl font-bold text-blue-600">${weather.minTemp}°C</p>
         </div>
       </div>
-    `;
+      
+      <div class="bg-purple-50 p-2.5 sm:p-3 rounded-xl border border-purple-100">
+        <div class="flex items-center justify-between flex-wrap gap-1">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            <span class="text-xs sm:text-sm text-purple-700 font-medium">Wind Speed</span>
+          </div>
+          <span class="text-base sm:text-lg font-bold text-purple-600">${weather.windspeed} km/h</span>
+        </div>
+        <div class="mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-purple-600">Direction: ${weather.winddirection}°</div>
+      </div>
+      
+      <div class="bg-gray-50 p-2.5 sm:p-3 rounded-xl border border-gray-100">
+        <div class="flex items-start gap-2 text-gray-600">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-[10px] sm:text-xs font-medium leading-tight">Last Updated: ${new Date(weather.time).toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
     overlay.setPosition(center3857);
   };
 
@@ -399,124 +399,132 @@ export default function WeatherMap() {
     await showWeatherOnMap(lon, lat);
   };
 
-  return (
+return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Enhanced Header */}
       <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 shadow-2xl">
-        <div className="px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-white/20 backdrop-blur-sm p-2.5 rounded-xl shadow-lg">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="bg-white/20 backdrop-blur-sm p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl shadow-lg">
+              <svg className="w-5 h-5 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
               </svg>
             </div>
             <div>
-              <h1 className="text-white font-bold text-2xl tracking-tight">Climate Intelligence Map</h1>
-              <p className="text-blue-100 text-sm">Real-time Meteorological Analysis Platform</p>
+              <h1 className="text-white font-bold text-base sm:text-xl lg:text-2xl tracking-tight leading-tight">
+                Climate Intelligence Map
+              </h1>
+              <p className="text-blue-100 text-xs sm:text-sm hidden sm:block">Real-time Meteorological Analysis</p>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+          <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-              <span className="text-white text-sm font-semibold">Live Data</span>
+              <span className="text-white text-xs sm:text-sm font-semibold">Live Data</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Control Panel */}
-      <div className="absolute top-28 left-6 z-10 w-[360px]">
-        <div className="bg-white/98 backdrop-blur-2xl shadow-2xl rounded-3xl border border-gray-200/50 overflow-hidden transform transition-all hover:shadow-3xl">
+      {/* Enhanced Control Panel - Compact Mobile Version */}
+      <div className="absolute top-16 sm:top-24 lg:top-28 left-2 sm:left-4 lg:left-6 z-10 w-[280px] sm:w-[340px] lg:w-[360px] max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="bg-white/98 backdrop-blur-2xl shadow-2xl rounded-xl sm:rounded-3xl border border-gray-200/50 overflow-hidden">
           {/* Panel Header */}
-          <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 py-5">
-            <h2 className="text-white font-bold text-xl flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-lg">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-3 sm:px-6 py-2.5 sm:py-5">
+            <h2 className="text-white font-bold text-sm sm:text-xl flex items-center gap-2">
+              <div className="bg-white/20 p-1 sm:p-2 rounded-md sm:rounded-lg">
+                <svg className="w-3 h-3 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              Control Panel
+              <span className="hidden sm:inline">Control Panel</span>
+              <span className="sm:hidden">Controls</span>
             </h2>
-            <p className="text-blue-100 text-xs mt-1">Manage your weather data analysis</p>
+            <p className="text-blue-100 text-xs mt-0.5 sm:mt-1 hidden sm:block">Manage your weather data analysis</p>
           </div>
 
-          <div className="p-6 space-y-5">
+          <div className="p-3 sm:p-6 space-y-3 sm:space-y-5">
             {/* Coordinates Input */}
-            <div className="space-y-3">
-              <label className="flex items-center gap-2 text-sm font-bold text-gray-800">
-                <div className="bg-blue-100 p-1.5 rounded-lg">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-1.5 sm:space-y-3">
+              <label className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-800">
+                <div className="bg-blue-100 p-1 sm:p-1.5 rounded-md sm:rounded-lg">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
                 </div>
-                Enter Coordinates
+                <span className="hidden sm:inline">Enter Coordinates</span>
+                <span className="sm:hidden">Coordinates</span>
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="lon, lat (e.g., 31.2357, 30.0444)"
+                  placeholder="31.24, 30.04"
                   value={coordinates}
                   onChange={(e) => setCoordinates(e.target.value)}
-                  className="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 
-                           focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 
-                           transition-all text-sm placeholder:text-gray-400 font-medium"
+                  className="w-full border-2 border-gray-200 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 
+                           focus:outline-none focus:border-blue-500 focus:ring-2 sm:focus:ring-4 focus:ring-blue-100 
+                           transition-all text-xs sm:text-sm placeholder:text-gray-400 font-medium"
                 />
               </div>
               <button
                 onClick={handleShowWeather}
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold 
-                         py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] 
-                         active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                         py-2 sm:py-3.5 rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl hover:scale-[1.02] 
+                         active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                Show Weather Data
+                <span className="hidden sm:inline">Show Weather Data</span>
+                <span className="sm:hidden">Show Weather</span>
               </button>
             </div>
 
             {/* Divider */}
-            <div className="relative py-2">
+            <div className="relative py-1 sm:py-2">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t-2 border-gray-200"></div>
+                <div className="w-full border-t border-gray-200"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="bg-white px-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Or Upload File</span>
+                <span className="bg-white px-2 sm:px-4 text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-wider">Or</span>
               </div>
             </div>
 
             {/* Shapefile Upload */}
-            <div className="space-y-3">
-              <label className="flex items-center gap-2 text-sm font-bold text-gray-800">
-                <div className="bg-indigo-100 p-1.5 rounded-lg">
-                  <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-1.5 sm:space-y-3">
+              <label className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-800">
+                <div className="bg-indigo-100 p-1 sm:p-1.5 rounded-md sm:rounded-lg">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                 </div>
-                Import Shapefile (.zip)
+                <span className="hidden sm:inline">Import Shapefile</span>
+                <span className="sm:hidden">Shapefile</span>
               </label>
-              <div className="relative border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-indigo-400 transition-colors bg-gray-50">
+              <div className="relative border-2 border-dashed border-gray-300 rounded-lg sm:rounded-xl p-2 sm:p-4 hover:border-indigo-400 transition-colors bg-gray-50">
                 <input
                   type="file"
                   accept=".zip"
                   onChange={handleFileUpload}
-                  className="w-full text-sm text-gray-600 cursor-pointer
-                           file:mr-4 file:py-3 file:px-5 file:rounded-xl file:border-0 
+                  className="w-full text-[10px] sm:text-sm text-gray-600 cursor-pointer
+                           file:mr-2 sm:file:mr-4 file:py-1.5 sm:file:py-3 file:px-2 sm:file:px-5 
+                           file:rounded-md sm:file:rounded-xl file:border-0 
                            file:bg-gradient-to-r file:from-indigo-600 file:to-purple-600 
                            file:text-white file:font-bold file:cursor-pointer file:shadow-md
-                           hover:file:shadow-lg file:transition-all file:duration-200"
+                           hover:file:shadow-lg file:transition-all file:duration-200 file:text-[10px] sm:file:text-sm"
                 />
               </div>
               <button
                 onClick={handleProcessFile}
                 className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold 
-                         py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] 
-                         active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                         py-2 sm:py-3.5 rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl hover:scale-[1.02] 
+                         active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Process Shapefile
+                <span className="hidden sm:inline">Process Shapefile</span>
+                <span className="sm:hidden">Process</span>
               </button>
             </div>
 
@@ -524,28 +532,29 @@ export default function WeatherMap() {
             <button
               onClick={handleDownloadPDF}
               className="w-full bg-gradient-to-r from-gray-800 to-gray-900 text-white font-bold 
-                       py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] 
-                       active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                       py-2 sm:py-3.5 rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl hover:scale-[1.02] 
+                       active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Download PDF Report
+              <span className="hidden sm:inline">Download PDF Report</span>
+              <span className="sm:hidden">Download PDF</span>
             </button>
           </div>
         </div>
 
-        {/* Enhanced Info Tip */}
-        <div className="mt-4 bg-gradient-to-r from-blue-50 to-indigo-50 backdrop-blur-sm border-2 border-blue-200 rounded-2xl p-4 shadow-lg">
-          <div className="flex gap-3">
-            <div className="bg-blue-500 p-2 rounded-lg h-fit">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {/* Enhanced Info Tip - Hidden on Mobile */}
+        <div className="hidden sm:block mt-3 sm:mt-4 bg-gradient-to-r from-blue-50 to-indigo-50 backdrop-blur-sm border-2 border-blue-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg">
+          <div className="flex gap-2 sm:gap-3">
+            <div className="bg-blue-500 p-1.5 sm:p-2 rounded-lg h-fit">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-blue-900 leading-relaxed font-medium">
-                <span className="font-bold">Pro Tip:</span> Double-click anywhere on the map to instantly view detailed weather information for that location.
+              <p className="text-xs sm:text-sm text-blue-900 leading-relaxed font-medium">
+                <span className="font-bold">Tip:</span> Double-click on the map to view weather info for that location.
               </p>
             </div>
           </div>

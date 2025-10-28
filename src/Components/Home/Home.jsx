@@ -14,6 +14,52 @@ export default function Home() {
     })
   }, [])
 
+const climateArticles = [
+  {
+    title: "Temperature and Its Impact on Climate",
+    excerpt: "An analysis of global temperature changes and their role in shaping weather and overall climate patterns.",
+    category: "Temperature",
+    readTime: "6 min read",
+    gradient: "from-orange-400 to-red-600"
+  },
+  {
+    title: "Rainfall and Its Role in Environmental Balance",
+    excerpt: "An overview of how rainfall forms and distributes, and its impact on agriculture, groundwater, and ecosystems.",
+    category: "Rainfall",
+    readTime: "7 min read",
+    gradient: "from-blue-400 to-cyan-600"
+  },
+  {
+    title: "Winds as Indicators of Weather Changes",
+    excerpt: "A study of wind patterns and their role in transferring heat, moisture, and shaping storms and weather systems.",
+    category: "Wind",
+    readTime: "6 min read",
+    gradient: "from-sky-400 to-indigo-600"
+  },
+  {
+    title: "Atmospheric Pressure and Its Relation to Weather",
+    excerpt: "An explanation of how changes in air pressure affect weather conditions and the formation of low-pressure systems.",
+    category: "Pressure",
+    readTime: "5 min read",
+    gradient: "from-gray-400 to-slate-600"
+  },
+  {
+    title: "Humidity and Its Effect on Heat Perception",
+    excerpt: "Understanding the relationship between humidity and temperature, and how it affects human comfort and weather.",
+    category: "Humidity",
+    readTime: "5 min read",
+    gradient: "from-emerald-400 to-green-600"
+  },
+  {
+    title: "Climate Analysis Through Weather Data",
+    excerpt: "Using weather data such as temperature, wind, and pressure to understand long-term climate patterns.",
+    category: "Climate",
+    readTime: "8 min read",
+    gradient: "from-purple-400 to-fuchsia-600"
+  }
+];
+
+
   const weatherCards = [
     {
       title: "Cloud Layer",
@@ -205,7 +251,7 @@ export default function Home() {
         </div>
 
         {/* Analysis Tools */}
-        <div>
+        <div className="mb-16">
           <div className="flex items-center gap-3 mb-8" data-aos="fade-right">
             <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
             <h2 className="text-3xl font-bold text-gray-800">Analysis Tools</h2>
@@ -244,6 +290,59 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+
+        {/* Climate Articles Section */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-8" data-aos="fade-right">
+            <div className="w-1 h-8 bg-gradient-to-b from-green-500 to-teal-500 rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-800">Climate Articles</h2>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+            <div className="space-y-8">
+              {climateArticles.map((article, index) => (
+                <article 
+                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 50}
+                  className="pb-8 border-b border-gray-200 last:border-b-0 last:pb-0"
+                >
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="text-4xl">{article.image}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${article.gradient} text-white`}>
+                          {article.category}
+                        </span>
+                        <span className="text-xs text-gray-500 flex items-center gap-1">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {article.readTime}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-2xl font-bold text-gray-800 mb-3 hover:text-blue-600 transition-colors cursor-pointer" dir="rtl">
+                        {article.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 leading-relaxed mb-4" dir="rtl">
+                        {article.excerpt}
+                      </p>
+                      
+                      <button className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2 transition-colors">
+                        Readmore
+                        <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
 
