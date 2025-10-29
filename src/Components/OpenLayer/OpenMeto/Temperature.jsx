@@ -433,7 +433,7 @@ return (
       </div>
 
       {/* Enhanced Control Panel - Compact Mobile Version */}
-      <div className="absolute top-16 sm:top-24 lg:top-28 left-2 sm:left-4 lg:left-6 z-10 w-[280px] sm:w-[340px] lg:w-[360px] max-h-[calc(100vh-5rem)] overflow-y-auto">
+      <div className="absolute top-16 sm:top-24 lg:top-28 left-2 sm:left-4 lg:left-6 z-10 w-[280px] sm:w-[100px] lg:w-[360px] max-h-[calc(100vh-5rem)] overflow-y-auto">
         <div className="bg-white/98 backdrop-blur-2xl shadow-2xl rounded-xl sm:rounded-3xl border border-gray-200/50 overflow-hidden">
           {/* Panel Header */}
           <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-3 sm:px-6 py-2.5 sm:py-5">
