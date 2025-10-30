@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import Footer from '../Layout/Footer/Footer'
-import { Link } from 'react-router-dom'
+import { Link, Links, NavLink, useNavigate } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export default function Home() {
+  const navigate = useNavigate();
+ 
   
   useEffect(() => {
     AOS.init({
@@ -355,28 +357,35 @@ const climateArticles = [
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 cursor-pointer">
             {[
               {
+                
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />,
                 title: "Real-time Data",
-                desc: "Instant updates from global weather stations"
+                desc: "Instant updates from global weather stations",
+                path: "/Dashboard"
+               
+                
               },
               {
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />,
                 title: "Advanced Analytics",
-                desc: "Comprehensive data visualization tools"
+                desc: "Comprehensive data visualization tools",
+                path: "/Temperature"
               },
               {
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
                 title: "Global Coverage",
-                desc: "Worldwide weather monitoring network"
+                desc: "Worldwide weather monitoring network",
+                path: "/Cloudlayer"
               }
             ].map((feature, index) => (
               <div 
                 key={index}
                 className="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
                 data-aos="zoom-in"
+                onClick={() => navigate(feature.path)}
                 data-aos-delay={index * 100}
               >
                 <div className="bg-white/20 w-14 h-14 rounded-xl flex items-center justify-center mb-4">

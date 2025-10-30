@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import shp from "shpjs";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
+import { Link } from "react-router-dom";
 
 const getWindData = async (lon, lat) => {
   try {
@@ -498,6 +499,11 @@ export default function WindMap() {
             </div>
           </div>
           <div className="hidden md:flex items-center gap-3">
+            <Link to={"/"}>
+              <button className="ml-4 bg-white text-emerald-600 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer">
+                Return
+              </button>
+              </Link>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
               <span className="text-white text-xs sm:text-sm font-semibold">Live Data</span>

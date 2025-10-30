@@ -26,15 +26,16 @@ export default function BackToTopButton() {
   return (
     visible && (
       <button
-        onClick={scrollToTop}
-        className="fixed bottom-6 right-6 p-4 rounded-full shadow-lg 
-        bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 
-        text-white transition-all duration-500 hover:scale-110 
-        hover:shadow-2xl animate-pulse hover:animate-none z-50  cursor-pointer"
-        aria-label="الرجوع لأعلى الصفحة"
-      >
-        <FaArrowUp className="text-xl drop-shadow-md" />
-      </button>
+  onClick={scrollToTop}
+  className="fixed bottom-24 right-6 p-4 rounded-full shadow-lg 
+  bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 
+  text-white transition-all duration-500 hover:scale-110 
+  hover:shadow-2xl animate-pulse hover:animate-none z-50 cursor-pointer"
+  aria-label="الرجوع لأعلى الصفحة"
+>
+  <FaArrowUp className="text-xl drop-shadow-md" />
+</button>
+
     )
   );
 }

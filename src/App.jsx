@@ -46,18 +46,22 @@ function App() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "Pressure", element: <Pressure /> },
+       
         { path: "dashboard", element: <WeatherDashboard /> },
         { path: "DashboardGovsEgypt", element: <DashboardGovsEgypt /> },
-        { path: "Rain", element: <Rain /> },
-        { path: "wind", element: <Wind /> },
-        { path: "Cloudlayer", element: <Cloudlayer /> },
-        { path: "Pressurelayer", element: <Pressurelayer /> },
-        { path: "Temperaturelayer", element: <Temperaturelayer /> },
-        { path: "Windlayer", element: <Windlayer /> },
+        
+        
+        
       ],
     },
+    { path: "Windlayer", element: <Windlayer /> },
+    { path: "Pressurelayer", element: <Pressurelayer /> },
+    { path: "Temperaturelayer", element: <Temperaturelayer /> },
+    { path: "Cloudlayer", element: <Cloudlayer /> },
     { path: "Temperature", element: <Temperature /> },
+    { path: "Pressure", element: <Pressure /> },
+    { path: "Rain", element: <Rain /> },
+    { path: "wind", element: <Wind /> },
   ]);
 
  return (
