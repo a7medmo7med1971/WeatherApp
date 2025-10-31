@@ -170,7 +170,7 @@ ${rain > 0 ? "⚠️ لا تنسى المظلة!" : "☀️ يوم جميل!"}`;
     <>
       {/* 💬 نافذة الشات - تظهر عند isOpen = true */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[90vw] sm:w-96 bg-white rounded-2xl shadow-2xl border-2 border-blue-200 overflow-hidden animate-slideUp">
+        <div className="fixed bottom-8 right-4 sm:right-6 z-50 w-[80vw] sm:w-90 bg-white rounded-2xl shadow-2xl border-2 border-blue-200 overflow-hidden animate-slideUp">
           {/* 🎨 رأس الشات */}
           <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white p-4">
             <div className="flex items-center justify-between">
@@ -188,7 +188,7 @@ ${rain > 0 ? "⚠️ لا تنسى المظلة!" : "☀️ يوم جميل!"}`;
               {/* ❌ زر الإغلاق */}
               <button
                 onClick={toggleChat}
-                className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-all duration-200"
+                className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-all duration-200 cursor-pointer"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -262,7 +262,7 @@ ${rain > 0 ? "⚠️ لا تنسى المظلة!" : "☀️ يوم جميل!"}`;
       {/* 🔘 زر فتح الشات العائم */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-4 right-4 sm:right-6 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 hover:shadow-blue-500/50 group"
+        className="fixed bottom-4 right-4 sm:right-4 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 hover:shadow-blue-500/50 group cursor-pointer"
       >
         {isOpen ? (
           // ❌ أيقونة الإغلاق
@@ -282,19 +282,50 @@ ${rain > 0 ? "⚠️ لا تنسى المظلة!" : "☀️ يوم جميل!"}`;
       </button>
 
       {/* 🎨 CSS Animation */}
+      {/* 🎨 CSS Animation */}
       <style jsx>{`
         @keyframes slideUp {
           from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        .animate-slideUp {
+          animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
-        .animate-slideUp {
-          animation: slideUp 0.3s ease-out;
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f5f9;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, #3b82f6, #2563eb);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, #2563eb, #1d4ed8);
         }
       `}</style>
     </>
